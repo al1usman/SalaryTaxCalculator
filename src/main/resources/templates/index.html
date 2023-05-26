@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salary Tax Calculator</title>
+</head>
+<body>
+<h1>Salary Tax Calculator</h1>
+<form action="#" th:action="@{/salary-tax}" th:object="${salaryTax}" method="post">
+    <label for="monthlySalary">Monthly Salary:</label>
+    <input type="text" id="monthlySalary" name="monthlySalary" required/><br/>
+    <button type="submit">Calculate Tax</button>
+</form>
+
+<div th:if="${salaryTax != null}">
+    <h2>Results:</h2>
+    <p>Salary Tax Percentage: <span th:text="${salaryTax.salaryTaxPercentage}"></span></p>
+    <p>Monthly Salary: <span th:text="${salaryTax.monthlySalary}"></span></p>
+    <p>Monthly Tax: <span th:text="${salaryTax.monthlyTax}"></span></p>
+    <p>Monthly Salary After Tax: <span th:text="${salaryTax.monthlySalaryAfterTax}"></span></p>
+    <p>Yearly Salary: <span th:text="${salaryTax.yearlySalary}"></span></p>
+    <p>Yearly Tax: <span th:text="${salaryTax.yearlyTax}"></span></p>
+    <p>Yearly Salary After Tax: <span th:text="${salaryTax.yearlySalaryAfterTax}"></span></p>
+    <p>Extra Tax Yearly Fixed Amount: <span th:text="${salaryTax.fixedAmount}"></span></p>
+</div>
+</body>
+</html>
