@@ -1,11 +1,19 @@
 import com.tax.salary.entity.SalaryTax;
 
+rule "Calculate Salary Tax - 0%"
+when
+    salaryTax: SalaryTax(yearlySalary <= 600000)
+then
+    salaryTax.setTaxableSalaryRange("0 to 600000");
+end
+
 rule "Calculate Salary Tax - 2.5%"
 when
     salaryTax: SalaryTax(yearlySalary > 600000 && yearlySalary <= 1200000)
 then
     salaryTax.setSalaryTaxPercentage(2.5);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 600000);
+    salaryTax.setTaxableSalaryRange("600,000 to 1,200,000");
 end
 
 rule "Calculate Salary Tax - 12.5% "
@@ -15,6 +23,7 @@ then
     salaryTax.setSalaryTaxPercentage(12.5);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 1200000);
     salaryTax.setFixedAmount(15000);
+    salaryTax.setTaxableSalaryRange("1,200,000 to 2,400,000");
 end
 
 rule "Calculate Salary Tax - 20% "
@@ -24,6 +33,7 @@ then
     salaryTax.setSalaryTaxPercentage(20);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 2400000);
     salaryTax.setFixedAmount(165000);
+    salaryTax.setTaxableSalaryRange("2,400,000 to 3,600,000");
 end
 
 rule "Calculate Salary Tax - 25% "
@@ -33,6 +43,7 @@ then
     salaryTax.setSalaryTaxPercentage(25);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 3600000);
     salaryTax.setFixedAmount(405000);
+    salaryTax.setTaxableSalaryRange("3,600,000 to 6,000,000");
 end
 
 rule "Calculate Salary Tax - 32.5% "
@@ -42,6 +53,7 @@ then
     salaryTax.setSalaryTaxPercentage(32.5);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 6000000);
     salaryTax.setFixedAmount(1005000);
+    salaryTax.setTaxableSalaryRange("6,000,000 to 12,000,000");
 end
 
 rule "Calculate Salary Tax - 35% "
@@ -51,6 +63,5 @@ then
     salaryTax.setSalaryTaxPercentage(35);
     salaryTax.setTaxableAmount(salaryTax.getYearlySalary() - 12000000);
     salaryTax.setFixedAmount(2955000);
+    salaryTax.setTaxableSalaryRange("12,000,000 to 999,999,999");
 end
-
-
