@@ -15,4 +15,18 @@ public class SalaryTax {
     private double yearlySalaryAfterTax;
     private double taxableAmount;
     private double fixedAmount;
+    private String taxableSalaryRange;
+
+    public SalaryTax() {
+        setDefaultValues();
+    }
+
+    // Method to set default values
+    public void setDefaultValues() {
+        yearlySalary = 0;
+        salaryTaxPercentage = 0;
+        taxableAmount = 0;
+        fixedAmount = 0;
+        taxableSalaryRange = "0.0";
+    }
 }
