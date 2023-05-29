@@ -7,14 +7,14 @@ import lombok.Setter;
 @Setter
 public class SalaryTax {
     private double salaryTaxPercentage;
-    private double monthlySalary;
-    private double monthlyTax;
-    private double monthlySalaryAfterTax;
-    private double yearlySalary;
-    private double yearlyTax;
-    private double yearlySalaryAfterTax;
-    private double taxableAmount;
-    private double fixedAmount;
+    private long monthlySalary;
+    private long monthlyTax;
+    private long monthlySalaryAfterTax;
+    private long yearlySalary;
+    private long yearlyTax;
+    private long yearlySalaryAfterTax;
+    private long taxableAmount;
+    private long fixedAmount;
     private String taxableSalaryRange;
 
     public SalaryTax() {
