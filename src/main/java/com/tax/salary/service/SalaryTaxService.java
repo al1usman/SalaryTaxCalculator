@@ -13,11 +13,11 @@ public class SalaryTaxService {
 
     public SalaryTax getTax(SalaryTax salaryTax) {
         KieSession kieSession = kieContainer.newKieSession();
-        salaryTax.setYearlySalary(salaryTax.getMonthlySalary() * 12);
+        salaryTax.setYearlySalary((long) (salaryTax.getMonthlySalary() * 12));
         kieSession.insert(salaryTax);
         kieSession.fireAllRules();
         salaryTax.setYearlySalaryAfterTax(salaryTax.getYearlySalaryAfterTax());
-        salaryTax.setYearlyTax(((salaryTax.getTaxableAmount() * salaryTax.getSalaryTaxPercentage() / 100)) + salaryTax.getFixedAmount());
+        salaryTax.setYearlyTax((long) (((salaryTax.getTaxableAmount() * salaryTax.getSalaryTaxPercentage() / 100)) + salaryTax.getFixedAmount()));
         salaryTax.setYearlySalaryAfterTax(salaryTax.getYearlySalary() - salaryTax.getYearlyTax());
         salaryTax.setMonthlyTax(salaryTax.getYearlyTax() / 12);
         salaryTax.setMonthlySalaryAfterTax(salaryTax.getYearlySalaryAfterTax() / 12);
