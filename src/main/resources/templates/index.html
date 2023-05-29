@@ -108,7 +108,7 @@
 <p class="p1">This is the latest tax calculator as per <strong style="color: #9a3131">2022-2023</strong> budget presented by the government of Pakistan</p>
 <form th:action="@{/salary-tax-calculator}" th:object="${salaryTax}" method="post">
     <label for="monthlySalary">Enter your Monthly Salary:</label>
-    <input type="text" id="monthlySalary" name="monthlySalary" required/><br/>
+    <input type="text" id="monthlySalary" name="monthlySalary" pattern="[0-9]+" required/><br/>
     <button type="submit">Calculate Tax</button>
 </form>
 
